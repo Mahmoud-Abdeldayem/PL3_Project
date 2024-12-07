@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FCAI_Level_4_S_1\\PL3\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj": {}
+    "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj": {}
   },
   "projects": {
-    "D:\\FCAI_Level_4_S_1\\PL3\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj": {
+    "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FCAI_Level_4_S_1\\PL3\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
+        "projectUniqueName": "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
         "projectName": "LibraryManagementSystem",
-        "projectPath": "D:\\FCAI_Level_4_S_1\\PL3\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
-        "packagesPath": "C:\\Users\\mahmoud\\.nuget\\packages\\",
-        "outputPath": "D:\\FCAI_Level_4_S_1\\PL3\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\obj\\",
+        "projectPath": "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
+        "packagesPath": "C:\\Users\\asemy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mahmoud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\asemy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -23,7 +27,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "C:\\Program Files\\dotnet\\sdk\\8.0.403\\FSharp\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\8.0.307\\FSharp\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,7 +49,7 @@
             "FSharp.Core": {
               "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
               "target": "Package",
-              "version": "[8.0.401, )",
+              "version": "[8.0.301, )",
               "generatePathProperty": true
             },
             "System.Reactive.Windows.Forms": {
@@ -73,7 +77,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.307/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -7,6 +7,9 @@
   </PropertyGroup>
 	
   <ItemGroup>
+	<Compile Include="Models\BookData.fs" />
+    <Compile Include="Models\CoreFunctions.fs" />
+    <Compile Include="Forms\AddBookForm.fs" />
     <Compile Include="Forms\ShowBooksForm.fs" />
     <Compile Include="Forms\MainForm.fs" />
     <Compile Include="Program.fs" />
@@ -14,10 +17,6 @@
 
   <ItemGroup>
     <PackageReference Include="System.Reactive.Windows.Forms" Version="6.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0-windows7.0": {
-      "FSharp.Core/8.0.401": {
+      "FSharp.Core/8.0.301": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/FSharp.Core.dll": {
@@ -101,15 +101,15 @@
     }
   },
   "libraries": {
-    "FSharp.Core/8.0.401": {
-      "sha512": "pvmquLrs82m8WqWB49Gj+hsmnWURkUbc++pJ0P2NdrEv1ZVVrhDNjSiFNP4wW4HiTowwaRhjiBc5IKNV35Vf/A==",
+    "FSharp.Core/8.0.301": {
+      "sha512": "I94+2zfAhWMJwPzVDFSlsutZvjPkaRvLVipf8b2O4AyzxKUBmevDkUBzcJBqSQNB1Ikig8xdphswoeKrObqx7Q==",
       "type": "package",
-      "path": "fsharp.core/8.0.401",
+      "path": "fsharp.core/8.0.301",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "fsharp.core.8.0.401.nupkg.sha512",
+        "fsharp.core.8.0.301.nupkg.sha512",
         "fsharp.core.nuspec",
         "lib/netstandard2.0/FSharp.Core.dll",
         "lib/netstandard2.0/FSharp.Core.xml",
@@ -226,24 +226,29 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "FSharp.Core >= 8.0.401",
+      "FSharp.Core >= 8.0.301",
       "System.Reactive.Windows.Forms >= 6.0.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mahmoud\\.nuget\\packages\\": {}
+    "C:\\Users\\asemy\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FCAI_Level_4_S_1\\PL3\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
+      "projectUniqueName": "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
       "projectName": "LibraryManagementSystem",
-      "projectPath": "D:\\FCAI_Level_4_S_1\\PL3\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
-      "packagesPath": "C:\\Users\\mahmoud\\.nuget\\packages\\",
-      "outputPath": "D:\\FCAI_Level_4_S_1\\PL3\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\obj\\",
+      "projectPath": "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
+      "packagesPath": "C:\\Users\\asemy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\mahmoud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\asemy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -252,7 +257,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Program Files\\dotnet\\sdk\\8.0.403\\FSharp\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\8.0.307\\FSharp\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -274,7 +279,7 @@
           "FSharp.Core": {
             "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
             "target": "Package",
-            "version": "[8.0.401, )",
+            "version": "[8.0.301, )",
             "generatePathProperty": true
           },
           "System.Reactive.Windows.Forms": {
@@ -302,7 +307,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.307/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
