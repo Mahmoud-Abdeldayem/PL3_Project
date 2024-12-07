@@ -5,15 +5,16 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\mahmoud\.nuget\packages\</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\asemy\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.11.1</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.10.2</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\mahmoud\.nuget\packages\" />
+    <SourceRoot Include="C:\Users\asemy\.nuget\packages\" />
+    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgSystem_Reactive_Windows_Forms Condition=" '$(PkgSystem_Reactive_Windows_Forms)' == '' ">C:\Users\mahmoud\.nuget\packages\system.reactive.windows.forms\6.0.1</PkgSystem_Reactive_Windows_Forms>
-    <PkgFSharp_Core Condition=" '$(PkgFSharp_Core)' == '' ">C:\Users\mahmoud\.nuget\packages\fsharp.core\8.0.401</PkgFSharp_Core>
+    <PkgSystem_Reactive_Windows_Forms Condition=" '$(PkgSystem_Reactive_Windows_Forms)' == '' ">C:\Users\asemy\.nuget\packages\system.reactive.windows.forms\6.0.1</PkgSystem_Reactive_Windows_Forms>
+    <PkgFSharp_Core Condition=" '$(PkgFSharp_Core)' == '' ">C:\Users\asemy\.nuget\packages\fsharp.core\8.0.301</PkgFSharp_Core>
   </PropertyGroup>
 </Project>

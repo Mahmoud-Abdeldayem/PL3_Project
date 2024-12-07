@@ -5,6 +5,9 @@ open System
 open System.Drawing
 open Forms.ShowBooksForm
 
+open Forms.AddBookForm 
+
+
 type MainForm() as this = 
     inherit Form() 
     let searchBtn = new Button(Text = "Search" , Width = 150 , Height = 30 , BackColor = Drawing.Color.LightCoral,Location=Point(910, 25)) 
@@ -65,6 +68,13 @@ type MainForm() as this =
 
         exitBtn.Click.Add(fun _ -> 
             Application.Exit()
+        )
+
+        
+        // Add an event handler for the Add Book button which create the Form To Add a Book
+        addBookBtn.Click.Add(fun _ -> 
+            let addBookForm = new AddBookForm()
+            addBookForm.ShowDialog() |> ignore
         )
 
         this.Text <- "Home Page" 
