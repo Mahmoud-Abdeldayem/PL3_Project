@@ -1,4 +1,6 @@
-# Simple Library Management System Implemented with Functional Programming Paradigm Using F# 
+# Simple Library Management System  
+
+## A Simple Library Management System Implemented with Functional Programming Paradigm Using F# 
 
 ## Requirements
 .Net 8 SDK
