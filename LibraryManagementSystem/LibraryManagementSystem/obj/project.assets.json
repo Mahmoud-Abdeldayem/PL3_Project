@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0-windows7.0": {
-      "FSharp.Core/8.0.301": {
+      "FSharp.Core/8.0.300": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/FSharp.Core.dll": {
@@ -101,15 +101,15 @@
     }
   },
   "libraries": {
-    "FSharp.Core/8.0.301": {
-      "sha512": "I94+2zfAhWMJwPzVDFSlsutZvjPkaRvLVipf8b2O4AyzxKUBmevDkUBzcJBqSQNB1Ikig8xdphswoeKrObqx7Q==",
+    "FSharp.Core/8.0.300": {
+      "sha512": "Jv44fV7TNglyMku89lQcA4Q6mFKLyHb2bs1Yb72nvSVc+cHplEnoZ4XQUaaTLJGUTx/iMqcrkYGtaLzkkIhpaA==",
       "type": "package",
-      "path": "fsharp.core/8.0.301",
+      "path": "fsharp.core/8.0.300",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "fsharp.core.8.0.301.nupkg.sha512",
+        "fsharp.core.8.0.300.nupkg.sha512",
         "fsharp.core.nuspec",
         "lib/netstandard2.0/FSharp.Core.dll",
         "lib/netstandard2.0/FSharp.Core.xml",
@@ -226,29 +226,24 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "FSharp.Core >= 8.0.301",
+      "FSharp.Core >= 8.0.300",
       "System.Reactive.Windows.Forms >= 6.0.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\asemy\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\asus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
+      "projectUniqueName": "C:\\Users\\asus\\Downloads\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
       "projectName": "LibraryManagementSystem",
-      "projectPath": "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
-      "packagesPath": "C:\\Users\\asemy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asemy\\OneDrive\\Desktop\\PL3\\LibraryManagementSystem\\LibraryManagementSystem\\obj\\",
+      "projectPath": "C:\\Users\\asus\\Downloads\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem.fsproj",
+      "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\asus\\Downloads\\PL3_Project\\LibraryManagementSystem\\LibraryManagementSystem\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\asemy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -257,7 +252,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Program Files\\dotnet\\sdk\\8.0.307\\FSharp\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\8.0.302\\FSharp\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -279,7 +274,7 @@
           "FSharp.Core": {
             "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
             "target": "Package",
-            "version": "[8.0.301, )",
+            "version": "[8.0.300, )",
             "generatePathProperty": true
           },
           "System.Reactive.Windows.Forms": {
@@ -307,7 +302,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.307/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
