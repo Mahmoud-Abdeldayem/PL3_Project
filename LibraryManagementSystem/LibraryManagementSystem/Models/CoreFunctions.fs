@@ -51,7 +51,18 @@ let borrowBook (title: string) (userId: string) : Result<string, string> =
             // Book not found in the library
             Result.Error (sprintf "Book '%s' not found in the library." title)
 
-/// Function to clean up expired borrowed books
+
+
+/// Search for books by title in the booksMap
+let searchBooksByTitle (title: string) =
+    booksMap
+    |> Map.toSeq // Convert the map to a sequence of key-value pairs
+    |> Seq.map snd // Extract the `Book` values (ignore the keys)
+    |> Seq.filter (fun book -> book.Title.Contains(title, StringComparison.OrdinalIgnoreCase)) // Search by title
+    |> Seq.toList // Convert the sequence back to a list for further use
+
+    
+    /// Function to clean up expired borrowed books
 let cleanUpExpiredBooks () =
     let now = DateTime.Now
 

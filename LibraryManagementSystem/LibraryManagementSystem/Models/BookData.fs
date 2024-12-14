@@ -14,6 +14,37 @@ type Book = {
     BorrowDate: System.DateTime option
 }
 
+/// List to store books
+let booksList = [
+    { Title = "To Kill a Mockingbird"; 
+      Author = "Harper Lee"; 
+      Genre = "Fiction"; 
+      Status = "Available"; 
+      IsBorrowed = false; 
+      BorrowedBy = None; 
+      BorrowDate = None; 
+     }
+
+    { Title = "1984"; 
+      Author = "George Orwell"; 
+      Genre = "Dystopian"; 
+      Status = "Available"; 
+      IsBorrowed = false; 
+      BorrowedBy = None; 
+      BorrowDate = None; 
+    }
+   
+
+    { Title = "Moby Dick"; 
+      Author = "Herman Melville"; 
+      Genre = "Adventure"; 
+      Status = "Borrowed"; 
+      IsBorrowed = true; 
+      BorrowedBy = Some "John Doe"; 
+      BorrowDate = Some (DateTime.Now.AddDays(-10.0)); 
+    }
+]
+
 
 
 /// Mutable map to store books

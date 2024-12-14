@@ -8,9 +8,10 @@ open Forms.AddBookForm
 open BorrowedBookForm
 open CoreFunctions
 open BookData
+open Forms.SearchForms
 
-type MainForm() as this = 
-    inherit Form() 
+type MainForm() as this =
+    inherit Form()
 
     // Define UI components
     let searchBtn = new Button(Text = "Search", Width = 150, Height = 30, BackColor = Drawing.Color.LightCoral, Location = Point(910, 25)) 
@@ -25,24 +26,41 @@ type MainForm() as this =
     // Initialize components
     do
         // Show Books button click event
-        showBooksBtn.Click.Add(fun _ -> 
+        showBooksBtn.Click.Add(fun _ ->
             let showBooksForm = new ShowBooksForm()
             showBooksForm.Show()
         )
 
+        // Search button click event
+        searchBtn.Click.Add(fun _ ->
+            let searchText = searchArea.Text.Trim() // Get the text and trim any spaces
+            if String.IsNullOrWhiteSpace(searchText) then
+                // Display an alert if the search box is empty
+                MessageBox.Show(
+                    "The search field is required. Please enter the book name you want to search.", 
+                    "Input Required", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Warning
+                ) |> ignore
+            else
+                printfn "Search button clicked with text: %s" searchText // Debug print
+                let searchForm = new SearchForm(searchText)
+                searchForm.Show() |> ignore
+        )
+
         // Exit button click event
-        exitBtn.Click.Add(fun _ -> 
+        exitBtn.Click.Add(fun _ ->
             Application.Exit()
         )
 
         // Add Book button click event
-        addBookBtn.Click.Add(fun _ -> 
+        addBookBtn.Click.Add(fun _ ->
             let addBookForm = new AddBookForm()
             addBookForm.ShowDialog() |> ignore
         )
 
         // Borrow Book button click event
-        borrowBookBtn.Click.Add(fun _ -> 
+        borrowBookBtn.Click.Add(fun _ ->
             let borrowBookForm = new BorrowBookForm()
             borrowBookForm.ShowDialog() |> ignore
         )
