@@ -5,25 +5,23 @@ open System
 open System.Drawing
 open CoreFunctions // Import CoreFunctions to access searchBooksByTitle
 
-module SearchForms =
 
-    // Define the Book record type explicitly (optional here, but for clarity)
-    type Book = { Title: string; Author: string; Genre: string; Status: string; IsBorrowed: bool; BorrowedBy: string option; BorrowDate: DateTime option }
+module SearchForms =
 
     type SearchForm(searchedBookTitle: string) as this =
         inherit Form()
 
-        // Define UI components for showing book info
-        let lblTitle = new Label(Top = 20, Left = 20, Width = 350, Font = new Font("", 10f))
-        let lblAuthor = new Label(Top = 60, Left = 20, Width = 350, Font = new Font("", 10f))
-        let lblGenre = new Label(Top = 100, Left = 20, Width = 350, Font = new Font("", 10f))
-        let lblStatus = new Label(Top = 140, Left = 20, Width = 350, Font = new Font("", 10f))
-        let lblBorrowedBy = new Label(Top = 180, Left = 20, Width = 350, Font = new Font("", 10f))
-        let lblBorrowDate = new Label(Top = 220, Left = 20, Width = 350, Font = new Font("", 10f))
-        let btnExit = new Button(Top = 380, Left = 20, Text = "Exit", Width = 100, Font = new Font("", 10f), BackColor = Color.DarkRed)
+        // UI components for showing book info
+        let lblTitle = new Label(Top = 20, Left = 20, Width = 350)
+        let lblAuthor = new Label(Top = 60, Left = 20, Width = 350)
+        let lblGenre = new Label(Top = 100, Left = 20, Width = 350)
+        let lblStatus = new Label(Top = 140, Left = 20, Width = 350)
+        let lblBorrowedBy = new Label(Top = 180, Left = 20, Width = 350)
+        let lblBorrowDate = new Label(Top = 220, Left = 20, Width = 350)
+        let btnExit = new Button(Top = 380, Left = 20, Text = "Exit", Width = 100, BackColor = Color.DarkRed)
 
         do
-            // UI Setup
+            // UI setup
             this.Text <- "Search Results"
             this.Width <- 650
             this.Height <- 500
@@ -35,29 +33,30 @@ module SearchForms =
             this.Controls.Add(lblBorrowDate)
             this.Controls.Add(btnExit)
 
-            // Event handler for the Exit button
-            btnExit.Click.Add(fun _ -> 
-                this.Close() // Close the SearchForm when the button is clicked
-            )
+            // Exit button event
+            btnExit.Click.Add(fun _ -> this.Close())
 
-        // Populate the form with results
+        // Populate the form with search results
         let populateForm () =
-            let searchResults = CoreFunctions.searchBooksByTitle searchedBookTitle // Call search from CoreFunctions
+            let searchResults = searchBooksByTitle searchedBookTitle // Use the updated function
             if List.isEmpty searchResults then
-                lblTitle.Text <- "No book with this name in the library."
+                // Handle case where no books are found
+                lblTitle.Text <- "No books found with this title."
                 lblAuthor.Text <- ""
                 lblGenre.Text <- ""
                 lblStatus.Text <- ""
                 lblBorrowedBy.Text <- ""
                 lblBorrowDate.Text <- ""
             else
-                let book = searchResults.[0] // Get the first result (assuming unique titles)
-                lblTitle.Text <- "Title: " + book.Title // Use '+' for concatenation
+                // Display the first match (or adjust logic for multiple results if needed)
+                let book = searchResults.Head
+                lblTitle.Text <- "Title: " + book.Title
                 lblAuthor.Text <- "Author: " + book.Author
                 lblGenre.Text <- "Genre: " + book.Genre
                 lblStatus.Text <- "Status: " + book.Status
                 lblBorrowedBy.Text <- "Borrowed By: " + (book.BorrowedBy |> Option.defaultValue "N/A")
                 lblBorrowDate.Text <- "Borrow Date: " + (book.BorrowDate |> Option.map (fun date -> date.ToString("yyyy-MM-dd")) |> Option.defaultValue "N/A")
 
-        // Call populateForm to show results
+        // Call populateForm on initialization
         do populateForm()
+
