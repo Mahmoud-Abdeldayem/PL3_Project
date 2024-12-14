@@ -53,10 +53,13 @@ let borrowBook (title: string) (userId: string) : Result<string, string> =
 
 
 
-// Search function to find books by title
+/// Search for books by title in the booksMap
 let searchBooksByTitle (title: string) =
-    booksList 
-    |> List.filter (fun book -> book.Title.Contains(title, StringComparison.OrdinalIgnoreCase))
+    booksMap
+    |> Map.toSeq // Convert the map to a sequence of key-value pairs
+    |> Seq.map snd // Extract the `Book` values (ignore the keys)
+    |> Seq.filter (fun book -> book.Title.Contains(title, StringComparison.OrdinalIgnoreCase)) // Search by title
+    |> Seq.toList // Convert the sequence back to a list for further use
 
     
     /// Function to clean up expired borrowed books
