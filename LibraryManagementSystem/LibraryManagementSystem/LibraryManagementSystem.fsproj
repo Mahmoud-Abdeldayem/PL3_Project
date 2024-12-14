@@ -11,13 +11,15 @@
     <Compile Include="Models\CoreFunctions.fs" />
     <Compile Include="Forms\BorrowBookForm.fs" />
     <Compile Include="Forms\AddBookForm.fs" />
+	<Compile Include="Forms\SearchForm.fs" />
     <Compile Include="Forms\ShowBooksForm.fs" />
     <Compile Include="Forms\MainForm.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Reactive.Windows.Forms" Version="6.0.1" />
-  </ItemGroup>
+<ItemGroup>
+	<PackageReference Include="FSharp.Core" Version="8.0.300" />
+</ItemGroup>
+
 
 </Project>

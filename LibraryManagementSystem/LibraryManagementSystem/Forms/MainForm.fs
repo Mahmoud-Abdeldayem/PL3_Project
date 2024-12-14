@@ -8,6 +8,8 @@ open Forms.AddBookForm
 open BorrowedBookForm
 open CoreFunctions
 open BookData
+open Forms.SearchForms
+
 
 type MainForm() as this = 
     inherit Form() 
@@ -28,6 +30,14 @@ type MainForm() as this =
         showBooksBtn.Click.Add(fun _ -> 
             let showBooksForm = new ShowBooksForm()
             showBooksForm.Show()
+        )
+        
+        // Search button click event
+        searchBtn.Click.Add(fun _ -> 
+            let searchText = searchArea.Text
+            printfn "Search button clicked with text: %s" searchText // Debug print
+            let searchForm = new SearchForm(searchText)
+            searchForm.Show() |> ignore
         )
 
         // Exit button click event
