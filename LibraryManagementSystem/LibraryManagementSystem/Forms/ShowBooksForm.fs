@@ -1,33 +1,41 @@
 ﻿module Forms.ShowBooksForm
 
 open System
-open System.Windows.Forms
 open System.Drawing
+open System.Windows.Forms
+open CoreFunctions
 
 type ShowBooksForm() as this = 
     inherit Form()
 
-    let dataGridView = new DataGridView(Dock = DockStyle.Fill, AllowUserToAddRows = false, ReadOnly = true, AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill)
+    let dataGridView = new DataGridView(
+        Dock = DockStyle.Fill, 
+        AllowUserToAddRows = false, 
+        ReadOnly = true, 
+        AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+    )
 
-    // Grid columns (add more if you need)
+    // Define the columns
     let addColumns() =
-        dataGridView.Columns.Add(new DataGridViewTextBoxColumn(HeaderText = "Book ID", Name = "BookID")) |> ignore
         dataGridView.Columns.Add(new DataGridViewTextBoxColumn(HeaderText = "Title", Name = "Title")) |> ignore
         dataGridView.Columns.Add(new DataGridViewTextBoxColumn(HeaderText = "Author", Name = "Author")) |> ignore
+        dataGridView.Columns.Add(new DataGridViewTextBoxColumn(HeaderText = "Genre", Name = "Genre")) |> ignore
+        dataGridView.Columns.Add(new DataGridViewTextBoxColumn(HeaderText = "Availability", Name = "Availability")) |> ignore
 
-        //Borrow book btn
-        let borrowButtonColumn = new DataGridViewButtonColumn(HeaderText = "Borrow", Text = "Borrow", UseColumnTextForButtonValue = true)
-        dataGridView.Columns.Add(borrowButtonColumn) |> ignore
+    // Populate the grid with book data
+    let populateGrid() =
+        dataGridView.Rows.Clear()
+        let books = CoreFunctions.getAllBooksWithAvailability() // Get book data from CoreFunctions
+        for (title, author, genre, availability) in books do
+            dataGridView.Rows.Add(title, author, genre, availability) |> ignore
 
-        //Return book btn
-        let ReturnButtonColumn = new DataGridViewButtonColumn(HeaderText = "Return", Text = "Return", UseColumnTextForButtonValue = true)
-        dataGridView.Columns.Add(ReturnButtonColumn) |> ignore
-
-    
-    // Initialize components
     do
-        this.Text <- "BooksList"
-        this.Size <- Size(1100, 600)
+        // Initialize form properties
+        this.Text <- "Books List"
+        this.Size <- Size(800, 400)
         this.StartPosition <- FormStartPosition.CenterScreen
+
+        // Add columns and populate the grid
         addColumns()
         this.Controls.Add(dataGridView)
+        populateGrid()
