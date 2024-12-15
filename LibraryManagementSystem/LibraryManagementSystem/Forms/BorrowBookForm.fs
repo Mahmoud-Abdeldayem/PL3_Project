@@ -1,4 +1,4 @@
-﻿module BorrowedBookForm
+﻿module BorrowBookForm
 
 open System
 open System.Drawing
@@ -9,43 +9,57 @@ open CoreFunctions
 type BorrowBookForm() as this =
     inherit Form()
 
-    // Create the input fields and buttons
-    let titleLabel = new Label(Text = "Book Title:", Location = Point(10, 20))
-    let titleBox = new TextBox(Location = Point(100, 20), Width = 300, Height = 30, Multiline = false)
+    // Define UI components with updated design
+    let titleLabel = new Label(Text = "Book Title:", Location = Point(30, 30), Font = new Font("Arial", 12.0f))
+    let titleBox = new TextBox(Location = Point(150, 30), Width = 300, Font = new Font("Arial", 12.0f))
 
-    let userIdLabel = new Label(Text = "User ID:", Location = Point(10, 60))
-    let userIdBox = new TextBox(Location = Point(100, 60), Width = 300, Height = 30, Multiline = false)
+    let userIdLabel = new Label(Text = "User ID:", Location = Point(30, 80), Font = new Font("Arial", 12.0f))
+    let userIdBox = new TextBox(Location = Point(150, 80), Width = 300, Font = new Font("Arial", 12.0f))
 
-    let borrowButton = new Button(Text = "Borrow", Location = Point(150, 100), Width = 100, BackColor = Color.LightBlue)
-    let cancelButton = new Button(Text = "Cancel", Location = Point(270, 100), Width = 100, BackColor = Color.LightCoral)
+    let borrowButton = new Button(
+        Text = "Borrow", 
+        Location = Point(150, 140), 
+        Width = 140, 
+        Height = 50, 
+        BackColor = Color.MediumSeaGreen, 
+        ForeColor = Color.White,
+        Font = new Font("Arial", 12.0f, FontStyle.Bold)
+    )
+
+    let cancelButton = new Button(
+        Text = "Cancel", 
+        Location = Point(310, 140), 
+        Width = 140, 
+        Height = 50, 
+        BackColor = Color.DarkRed, 
+        ForeColor = Color.White,
+        Font = new Font("Arial", 12.0f, FontStyle.Bold)
+    )
 
     do
         // Initialize form properties
         this.Text <- "Borrow Book"
-        this.Size <- Size(450, 200)
+        this.Size <- Size(520, 250)
         this.StartPosition <- FormStartPosition.CenterScreen
+        this.BackColor <- Color.WhiteSmoke
+
+        // Add components to the form
         this.Controls.AddRange([| titleLabel; titleBox; userIdLabel; userIdBox; borrowButton; cancelButton |])
 
         // Event handler for Borrow button
         borrowButton.Click.Add(fun _ ->
-            let title = titleBox.Text
-            let userId = userIdBox.Text
+            let title = titleBox.Text.Trim()
+            let userId = userIdBox.Text.Trim()
 
-            // Check if the title or user ID is empty
             if String.IsNullOrWhiteSpace(title) || String.IsNullOrWhiteSpace(userId) then
                 MessageBox.Show("Both fields are required!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore
             else
-                // Normalize title to handle case insensitivity
                 let normalizedTitle = title.ToLower()
-
-                // Call the borrowBook function and handle the result
                 match borrowBook title userId with
                 | Result.Ok successMessage ->
-                    // Book borrowed successfully
                     MessageBox.Show(successMessage, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information) |> ignore
-                    this.Close()  // Close the form after successful borrowing
+                    this.Close() // Close the form after successful borrowing
                 | Result.Error errorMessage ->
-                    // Handle the error case
                     MessageBox.Show(errorMessage, "Borrow Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore
         )
 
