@@ -23,6 +23,8 @@ let addBook title author genre =
         booksMap <- booksMap.Add(title, newBook)
         printfn "Book '%s' added successfully!" title
 
+
+
 /// Function to borrow a book
 let borrowBook (title: string) (userId: string) : Result<string, string> =
     let normalizedTitle = title.ToLower()
@@ -47,46 +49,6 @@ let borrowBook (title: string) (userId: string) : Result<string, string> =
     | None -> 
         // Book not found in the library
         Result.Error (sprintf "Book '%s' not found in the library." title)
-
-/// Function to clean up expired borrowed books
-let cleanUpExpiredBooks () =
-    let now = DateTime.Now
-
-    // Find books that have expired (1-hour expiration)
-    let expiredBooks =
-        booksMap
-        |> Map.filter (fun _ book ->
-            match book.BorrowDate with
-            | Some borrowDate -> now > borrowDate.AddMinutes(0.1)  // Expire after 1 minute for testing
-            | None -> false
-        )
-
-    // Log the cleanup of expired books
-    expiredBooks
-    |> Map.iter (fun title _ -> 
-        printfn "Book '%s' has expired and is now available for borrowing." title
-    )
-
-    // Move expired books back to booksMap
-    expiredBooks
-    |> Map.iter (fun title book -> 
-        let updatedBook = 
-            { book with 
-                IsBorrowed = false
-                BorrowedBy = None
-                BorrowDate = None
-                Status = "Available"
-            }
-        booksMap <- booksMap.Add(title, updatedBook)
-    )
-
-let cleanupTimer = new System.Windows.Forms.Timer()
-cleanupTimer.Interval <- 5000  // Run every 5 seconds for testing
-cleanupTimer.Tick.Add(fun _ ->
-    cleanUpExpiredBooks()
-  
-)
-cleanupTimer.Start()
 
 
 
@@ -130,3 +92,15 @@ let searchBooksByTitle (title: string) =
     |> Seq.toList // Convert the sequence back to a list for further use
 
     
+
+
+
+
+/// Function to retrieve book data as a list of tuples (Title, Author, Genre, Availability)
+let getAllBooksWithAvailability () =
+    booksMap
+    |> Seq.map (fun kvp -> 
+        let book = kvp.Value
+        let availability = if book.IsBorrowed then "Borrowed" else "Available"
+        (book.Title, book.Author, book.Genre, availability))
+    |> Seq.toList
