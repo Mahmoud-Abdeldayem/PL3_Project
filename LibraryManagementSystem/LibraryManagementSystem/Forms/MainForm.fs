@@ -41,7 +41,7 @@ type MainForm() as this =
         FlatStyle = FlatStyle.Flat
     )
 
-    let actionPanel = new Panel(BackColor = Color.WhiteSmoke, Size = Size(900, 300), Location = Point(100, 130))
+    let actionPanel = new Panel(BackColor = Color.WhiteSmoke, Size = Size(800, 300), Location = Point(130, 130))
 
     let addBookBtn = new Button(
         Text = "Add Book",
