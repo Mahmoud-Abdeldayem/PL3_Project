@@ -9,6 +9,7 @@
   <ItemGroup>
 	<Compile Include="Models\BookData.fs" />
     <Compile Include="Models\CoreFunctions.fs" />
+    <Compile Include="Forms\ReturnBookForm.fs" />
     <Compile Include="Forms\BorrowBookForm.fs" />
     <Compile Include="Forms\AddBookForm.fs" />
 	<Compile Include="Forms\SearchForm.fs" />

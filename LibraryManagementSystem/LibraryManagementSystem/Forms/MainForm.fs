@@ -5,7 +5,8 @@ open System
 open System.Drawing
 open Forms.ShowBooksForm
 open Forms.AddBookForm
-open BorrowedBookForm
+open BorrowBookForm
+open ReturnBookForm
 open CoreFunctions
 open BookData
 open Forms.SearchForms
@@ -14,101 +15,171 @@ type MainForm() as this =
     inherit Form()
 
     // Define UI components
-    let searchBtn = new Button(Text = "Search", Width = 150, Height = 30, BackColor = Drawing.Color.LightCoral, Location = Point(910, 25)) 
-    let searchArea = new TextBox(Name = "Search_Box", Width = 900, Height = 30, Multiline = true, Location = Point(2, 25))
-    let searchLabel = new Label(Text = "Search a book:", Location = Point(0, 0)) 
-    let addBookBtn = new Button(Text = "Add Book", Width = 400, Height = 100, Location = Point(10, 100), Font = new Font("", 20f), BackColor = Color.MediumAquamarine)
-    let returnBookBtn = new Button(Text = "Return Book", Width = 400, Height = 100, Location = Point(670, 100), Font = new Font("", 20f), BackColor = Color.MediumAquamarine)
-    let showBooksBtn = new Button(Text = "Show Books", Width = 400, Height = 100, Location = Point(10, 250), Font = new Font("", 20f), BackColor = Color.MediumAquamarine)
-    let borrowBookBtn = new Button(Text = "Borrow Book", Width = 400, Height = 100, Location = Point(670, 250), Font = new Font("", 20f), BackColor = Color.MediumAquamarine)
-    let exitBtn = new Button(Text = "Exit", Width = 150, Height = 40, Location = Point(900, 500), BackColor = Color.DarkRed)
+    let titleLabel = new Label(
+        Text = "Library Management System",
+        Font = new Font("Segoe UI", 24f, FontStyle.Bold),
+        AutoSize = true,
+        Location = Point(330, 20),
+        ForeColor = Color.Teal
+    )
+
+    let searchLabel = new Label(
+        Text = "Search for a Book:",
+        Font = new Font("Segoe UI", 12f),
+        AutoSize = true,
+        Location = Point(10, 80),
+        ForeColor = Color.Gray
+    )
+    let searchArea = new TextBox(Width = 700, Height = 30, Location = Point(150, 75), BackColor = Color.WhiteSmoke, BorderStyle = BorderStyle.FixedSingle)
+    let searchBtn = new Button(
+        Text = "Search",
+        Width = 100,
+        Height = 30,
+        Location = Point(870, 75),
+        BackColor = Color.MediumSeaGreen,
+        ForeColor = Color.White,
+        FlatStyle = FlatStyle.Flat
+    )
+
+    let actionPanel = new Panel(BackColor = Color.WhiteSmoke, Size = Size(900, 300), Location = Point(100, 130))
+
+    let addBookBtn = new Button(
+        Text = "Add Book",
+        Width = 150,
+        Height = 150,
+        Location = Point(20, 50),
+        BackColor = Color.Teal,
+        ForeColor = Color.White,
+        FlatStyle = FlatStyle.Flat,
+        Font = new Font("Segoe UI", 10f, FontStyle.Bold)
+    )
+    let addBookLabel = new Label(
+        Text = "Add new books to the system",
+        Font = new Font("Segoe UI", 10f),
+        AutoSize = true,
+        Location = Point(25, 210),
+        ForeColor = Color.Gray
+    )
+
+    let borrowBookBtn = new Button(
+        Text = "Borrow Book",
+        Width = 150,
+        Height = 150,
+        Location = Point(220, 50),
+        BackColor = Color.Teal,
+        ForeColor = Color.White,
+        FlatStyle = FlatStyle.Flat,
+        Font = new Font("Segoe UI", 10f, FontStyle.Bold)
+    )
+    let borrowBookLabel = new Label(
+        Text = "Borrow books from the library",
+        Font = new Font("Segoe UI", 10f),
+        AutoSize = true,
+        Location = Point(225, 210),
+        ForeColor = Color.Gray
+    )
+
+    let returnBookBtn = new Button(
+        Text = "Return Book",
+        Width = 150,
+        Height = 150,
+        Location = Point(420, 50),
+        BackColor = Color.Teal,
+        ForeColor = Color.White,
+        FlatStyle = FlatStyle.Flat,
+        Font = new Font("Segoe UI", 10f, FontStyle.Bold)
+    )
+    let returnBookLabel = new Label(
+        Text = "Return borrowed books",
+        Font = new Font("Segoe UI", 10f),
+        AutoSize = true,
+        Location = Point(425, 210),
+        ForeColor = Color.Gray
+    )
+
+    let showBooksBtn = new Button(
+        Text = "Show Books",
+        Width = 150,
+        Height = 150,
+        Location = Point(620, 50),
+        BackColor = Color.Teal,
+        ForeColor = Color.White,
+        FlatStyle = FlatStyle.Flat,
+        Font = new Font("Segoe UI", 10f, FontStyle.Bold)
+    )
+    let showBooksLabel = new Label(
+        Text = "View all books in the library",
+        Font = new Font("Segoe UI", 10f),
+        AutoSize = true,
+        Location = Point(625, 210),
+        ForeColor = Color.Gray
+    )
+
+    let exitBtn = new Button(
+        Text = "Exit",
+        Width = 150,
+        Height = 40,
+        Location = Point(870, 450),
+        BackColor = Color.DarkRed,
+        ForeColor = Color.White,
+        FlatStyle = FlatStyle.Flat
+    )
 
     // Initialize components
     do
-        // Show Books button click event
-        showBooksBtn.Click.Add(fun _ ->
-            let showBooksForm = new ShowBooksForm()
-            showBooksForm.Show()
-        )
+        // Configure action panel
+        actionPanel.Controls.AddRange([|
+            addBookBtn; addBookLabel;
+            borrowBookBtn; borrowBookLabel;
+            returnBookBtn; returnBookLabel;
+            showBooksBtn; showBooksLabel
+        |])
 
-        // Search button click event
+        // Form setup
+        this.Text <- "Library Management System"
+        this.Size <- Size(1100, 600)
+        this.StartPosition <- FormStartPosition.CenterScreen
+        this.BackColor <- Color.LightGray
+
+        // Add controls to the form
+        this.Controls.Add(titleLabel)
+        this.Controls.Add(searchLabel)
+        this.Controls.Add(searchArea)
+        this.Controls.Add(searchBtn)
+        this.Controls.Add(actionPanel)
+        this.Controls.Add(exitBtn)
+
+        // Event handlers
         searchBtn.Click.Add(fun _ ->
-            let searchText = searchArea.Text.Trim() // Get the text and trim any spaces
+            let searchText = searchArea.Text.Trim()
             if String.IsNullOrWhiteSpace(searchText) then
-                // Display an alert if the search box is empty
-                MessageBox.Show(
-                    "The search field is required. Please enter the book name you want to search.", 
-                    "Input Required", 
-                    MessageBoxButtons.OK, 
-                    MessageBoxIcon.Warning
-                ) |> ignore
+                MessageBox.Show("Please enter a search term.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning) |> ignore
             else
-                printfn "Search button clicked with text: %s" searchText // Debug print
                 let searchForm = new SearchForm(searchText)
                 searchForm.Show() |> ignore
         )
 
-        // Exit button click event
-        exitBtn.Click.Add(fun _ ->
-            Application.Exit()
-        )
-
-        // Add Book button click event
         addBookBtn.Click.Add(fun _ ->
             let addBookForm = new AddBookForm()
             addBookForm.ShowDialog() |> ignore
         )
 
-        // Borrow Book button click event
         borrowBookBtn.Click.Add(fun _ ->
             let borrowBookForm = new BorrowBookForm()
             borrowBookForm.ShowDialog() |> ignore
         )
 
-        // Return Book button click event
-        returnBookBtn.Click.Add(fun _ ->
-            // Trigger cleanup for expired books
-            cleanUpExpiredBooks()
+   
 
-            // Collect details of expired books for feedback
-            let expiredBooks =
-                BorrowedBooksMap
-                |> Map.filter (fun _ book ->
-                    match book.BorrowDate with
-                    | Some borrowDate -> DateTime.Now > borrowDate.AddHours(1.0)
-                    | None -> false
-                )
-
-            // Provide feedback to the user
-            if expiredBooks.IsEmpty then
-                MessageBox.Show(
-                    "No books were expired at this time.",
-                    "Return Books",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                ) |> ignore
-            else
-                let titles = expiredBooks |> Map.toList |> List.map fst |> String.concat ", "
-                MessageBox.Show(
-                    $"The following books are now available: {titles}",
-                    "Return Books",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                ) |> ignore
+        returnBookBtn.Click.Add(fun _ -> 
+            // Open the ReturnBookForm when the "Return Book" button is clicked
+            let returnBookForm = new ReturnBookForm()
+            returnBookForm.ShowDialog() |> ignore
         )
 
-        // Form setup
-        this.Text <- "Home Page"
-        this.Height <- 600
-        this.Width <- 1100
-        this.BackColor <- Color.Honeydew
+        showBooksBtn.Click.Add(fun _ ->
+            let showBooksForm = new ShowBooksForm()
+            showBooksForm.Show() |> ignore
+        )
 
-        // Add controls to the form
-        this.Controls.Add(searchLabel)
-        this.Controls.Add(searchArea)
-        this.Controls.Add(searchBtn)
-        this.Controls.Add(addBookBtn)
-        this.Controls.Add(returnBookBtn)
-        this.Controls.Add(showBooksBtn)
-        this.Controls.Add(borrowBookBtn)
-        this.Controls.Add(exitBtn)
+        exitBtn.Click.Add(fun _ -> Application.Exit())
