@@ -60,7 +60,8 @@ type AddBookForm() as this =
             elif booksMap.ContainsKey(title) then
                 MessageBox.Show($"A book with the title '{title}' already exists!", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning) |> ignore
             else
-                addBook title author genre
+                let normalizedTitle = title.ToLower()
+                addBook normalizedTitle author genre
                 MessageBox.Show("Book added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information) |> ignore
                 this.Close()
         )
